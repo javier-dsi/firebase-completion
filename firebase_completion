@@ -127,6 +127,12 @@ _firebase() {
       return 0
       ;;
     
+    emulators:start )
+      args="-h --help --inspect-functions --only"
+      COMPREPLY=( $(compgen -W "${args}" -- "${cur}") )
+      return 0
+      ;;
+    
     -f|--firebase)
       args=$(firebase list|awk '{if(NR>2) {print $2}}'|grep -v '^$')
       COMPREPLY=( $(compgen -W "${args}" -- "${cur}") )
